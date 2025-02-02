@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Expertise Ranking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/styles.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Staff Expertise Ranking</h1>
+
+        <form action="/add_staff" method="POST" class="mb-5">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="publications">Publications</label>
+                <input type="number" class="form-control" id="publications" name="publications" required>
+            </div>
+            <div class="form-group">
+                <label for="citations">Citations</label>
+                <input type="number" class="form-control" id="citations" name="citations" required>
+            </div>
+            <div class="form-group">
+                <label for="h_index">H-index</label>
+                <input type="number" class="form-control" id="h_index" name="h_index" required>
+            </div>
+            <div class="form-group">
+                <label for="expertise">Expertise</label>
+                <input type="text" class="form-control" id="expertise" name="expertise" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Staff</button>
+        </form>
+
+        <h2>Staff List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Publications</th>
+                    <th>Citations</th>
+                    <th>H-index</th>
+                    <th>Expertise</th>
+                    <th>Impact Score</th>
+                    <th>Suggestions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staff_data %}
+                <tr>
+                    <td>{{ staff['Name'] }}</td>
+                    <td>{{ staff['Publications'] }}</td>
+                    <td>{{ staff['Citations'] }}</td>
+                    <td>{{ staff['H-index'] }}</td>
+                    <td>{{ staff['Expertise'] }}</td>
+                    <td>{{ staff['Impact Score'] | round(2) }}</td>
+                    <td>
+                        <ul>
+                            {% for suggestion in staff['Suggestions'] %}
+                                <li>{{ suggestion }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

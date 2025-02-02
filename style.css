@@ -1,0 +1,68 @@
+body {
+  background-color: #f8f9fa;
+  font-family: Arial, sans-serif; /* Updated font for better readability */
+}
+
+.container {
+  margin-top: 50px;
+  border-radius: 10px; /* Rounded corners for the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  padding: 20px; /* Padding inside the container */
+  background-color: white; /* Background color for the container */
+}
+
+h1 {
+  color: #343a40;
+  text-align: center; /* Center the heading */
+}
+
+form {
+  border: 1px solid #007bff; /* Border for the form */
+  border-radius: 5px; /* Rounded corners for the form */
+  padding: 20px; /* Padding inside the form */
+  background-color: #e9ecef; /* Light background for the form */
+}
+
+.form-group label {
+  font-weight: bold; /* Bold labels for better emphasis */
+}
+
+.btn-primary {
+  background-color: #28a745; /* Change button color to green */
+  border-color: #28a745; /* Change button border color */
+}
+
+.btn-primary:hover {
+  background-color: #218838; /* Darker green on hover */
+  border-color: #1e7e34; /* Darker border on hover */
+}
+
+.table {
+  margin-top: 20px;
+  border-collapse: collapse; /* Collapse borders for a cleaner look */
+}
+
+.table th {
+  background-color: #007bff; /* Blue background for header */
+  color: white;
+  padding: 10px; /* Padding in table header */
+  text-align: left; /* Left-align text in header */
+}
+
+.table td {
+  vertical-align: middle;
+  padding: 10px; /* Padding in table cells */
+  border-bottom: 1px solid #dee2e6; /* Light border for table rows */
+}
+
+.table tr:hover {
+  background-color: #f1f1f1; /* Light grey background on hover */
+}
+
+.table ul {
+  padding-left: 20px; /* Indent lists in suggestions */
+}
+
+.table ul li {
+  list-style-type: square; /* Change bullet style for list items */
+}

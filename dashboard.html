@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Staff Dashboard</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Total Publications: {{ total_publications }}</h2>
+            </div>
+            <div class="col-md-4">
+                <h2>Total Citations: {{ total_citations }}</h2>
+            </div>
+            <div class="col-md-4">
+                <h2>Total H-index: {{ total_h_index }}</h2>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Staff Performance Visualization</h2>
+        <canvas id="myChart" width="400" height="200"></canvas>
+        <script>
+        // Prepare data for the chart
+        var staffData = JSON.parse('{{ staff_data | tojson | safe }}'); // Ensure staff_data is properly formatted
+
+        // Check if staffData is an array
+        if (Array.isArray(staffData)) {
+            var labels = staffData.map(function(staff) {
+                return staff.Name; // Get staff names
+            });
+            var publicationsData = staffData.map(function(staff) {
+                return staff.Publications; // Get publications data
+            });
+            var citationsData = staffData.map(function(staff) {
+                return staff.Citations; // Get citations data
+            });
+
+            console.log('Labels:', labels);
+            console.log('Publications Data:', publicationsData);
+            console.log('Citations Data:', citationsData);
+
+            // Initialize the chart
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Publications',
+                        data: publicationsData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Citations',
+                        data: citationsData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        } else {
+            console.error('staffData is not an array:', staffData);
+        }
+        </script>
+    </div>
+</body>
+</html>
