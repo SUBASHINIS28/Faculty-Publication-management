@@ -23,5 +23,7 @@ The generate_suggestions function provides research suggestions based on the sta
 ## Routes:
 
 > /: The index route displays the staff members sorted by their impact scores.
+
 > /add_staff: A POST route to add new staff members to the list.
+
 > /dashboard: Displays aggregated metrics like total publications, citations, and H-index for all staff members.
